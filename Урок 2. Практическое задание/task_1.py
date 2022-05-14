@@ -15,3 +15,6 @@
 <class 'bool'>
 <class 'NoneType'>
 """
+my_list=[2, 'fff', 35.5, False, (4, 5), {1: 21, 3: 567}, None]
+for i in my_list:
+    print(type(i))

@@ -25,3 +25,40 @@
 “ед”: [“шт.”]
 }
 """
+# Отличное задание!
+# Хочу к нему сделать графический интерфейс
+tovary = []
+count_tov = 0
+
+
+def get_tovar():
+    name = input('Введите название: ')
+    price = int(input('Введите цену: '))
+    count = int(input('Введите количество: '))
+    ed = input('Введите единицы: ')
+    print("Товар введен успешно!")
+    return {'название': name, 'цена': price, 'количество': count, 'единицы': ed}
+
+
+def get_analys(tov):
+    names, prices, countes, eds = set(), set(), set(), set()
+    for i in tov:
+        print(i)
+        print(i[1]['название'])
+        names.add(i[1]['название'])
+        prices.add(i[1]['цена'])
+        countes.add(i[1]['количество'])
+        eds.add(i[1]['единицы'])
+    analitics={'названия': list(names), 'цены': list(prices), 'количества': list(countes), 'единицы': list(eds)}
+    print(*analitics.items(), sep='\n')
+
+
+f='1'
+while f!='0':
+    f = input("нажмите 1 для введения товара, 2 - для получения аналитики, 0 - для выхода: ")
+    if f == '1':
+        count_tov+=1
+        tovary.append((count_tov, get_tovar()))
+        print(tovary)
+    elif f == '2':
+        get_analys(tovary)
