@@ -6,3 +6,13 @@
 Для выполнения расчета для конкретных значений
 необходимо запускать скрипт с параметрами.
 """
+from sys import argv
+
+
+def zarplata(hour, price, prise):
+    return hour * price + prise
+
+
+name, h, p, ps = argv
+print(name)
+print(f'заработная плата равна {zarplata(int(h), int(p), int(ps))}')

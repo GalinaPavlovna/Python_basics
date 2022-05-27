@@ -12,3 +12,21 @@
 Во втором также необходимо предусмотреть условие,
 при котором повторение элементов списка будет прекращено.
 """
+from itertools import count, cycle
+from time import time
+c=int(input('Откуда считать? '))
+for i in count(c):
+    print(i, end=' ')
+    if i-c>15:
+        print('Устал...')
+        break
+
+poem='У попа была собака,\n Он ее любил,\n Она съела кусок мяса,\n Oн ее убил,\n' \
+     ' В землю закопал,\n И надпись написал:\n'.split('\n')
+input('Поехали? ')
+start=time()
+for i in cycle(poem):
+    print(i)
+    if time()-start>1:
+        print('Устал...')
+        break
