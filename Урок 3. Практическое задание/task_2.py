@@ -10,8 +10,9 @@ email: jackie@gmail.com, телефон: 01005321456
 """
 
 
-def user(name="Неизвестный", surname="", year="неизвестного", city="неизвестно каком", email="нет", phone="нет"):
-    print(f'{name} {surname} {year} года рождения, проживает в городе {city}, email: {email}, телефон: {phone}')
+def user(**kwargs):
+    print(f'{kwargs["name"]} {kwargs["surname"]} {kwargs["year"]} года рождения, '
+          f'проживает в городе {kwargs["city"]}, email: {kwargs["email"]}, телефон: {kwargs["phone"]}')
 
 
 n = input("Введите имя: ")
