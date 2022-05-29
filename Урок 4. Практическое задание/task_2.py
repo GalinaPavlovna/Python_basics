@@ -7,3 +7,12 @@
 
 Реализуйте вариант без и с генераторным выражением
 """
+from random import randrange as rnd
+my_list = [rnd(135) for _ in range(13)]
+print('Исходный список - ', *my_list)
+print('Список через list comprehension', *[my_list[i] for i in range(1, 13) if my_list[i]>my_list[i-1]])
+result_list=[]
+for i in range(1, 13):
+    if my_list[i]>my_list[i-1]:
+        result_list.append(my_list[i])
+print('Список стандартным способом: ', *result_list)
