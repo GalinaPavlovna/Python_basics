@@ -17,13 +17,19 @@ Process finished with exit code 0
 
 Process finished with exit code 0
 """
-a = input('Введите первое число: ')
-b = input('Введите второе число: ')
-try:
-    print(f'Результат  деления {int(a) / int(b):.2}')
-except ZeroDivisionError:
-    print('На ноль делить не получается!')
-except ValueError:
-    print('Кажется, вы ввели не число: это я делить не умею!')
-except Exception as e:
-    print('Что-то пошло не так - ', e)
+
+
+def delu(a, b):
+    try:
+        print(f'Результат  деления {int(a) / int(b):.2}')
+    except ZeroDivisionError:
+        print('На ноль делить не получается!')
+    except ValueError:
+        print('Кажется, вы ввели не число: это я делить не умею!')
+    except Exception as e:
+        print('Что-то пошло не так - ', e)
+
+
+first = input('Введите первое число: ')
+second = input('Введите второе число: ')
+delu(first, second)

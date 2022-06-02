@@ -5,3 +5,9 @@
                                         Физкультура:   —   30(пр)   —
 Пример словаря: {“Информатика”: 170, “Физика”: 40, “Физкультура”: 30}
 """
+with open('plan.txt', 'r', encoding='utf-8') as file_input:
+    dict_plan = {}
+    for i in file_input:
+        subj, *hours = i.split()
+        dict_plan[subj[:-1]] = sum([int(j.split('(')[0]) for j in hours if j.split('(')[0].isdigit()])
+    print(dict_plan)

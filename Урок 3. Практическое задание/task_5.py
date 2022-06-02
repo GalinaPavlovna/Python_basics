@@ -11,8 +11,8 @@ result = 0
 while f:
     string = input('Введите строку чисел, разделенных пробелом. Если вы хотите закончить - нажмите @ вместо числа:\n')
     if '@' in string:
-        f=0
+        f = 0
         string = string.replace('@', '')
-    string=string.split()
+    string = string.split()
     result = sum([int(i) for i in string], result)
     print('На данный момент ваша сумма', result)
