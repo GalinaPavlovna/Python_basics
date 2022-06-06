@@ -15,3 +15,24 @@
 
 Проверить работу примера, создав экземпляр и вызвав описанный метод.
 """
+from time import sleep
+from itertools import cycle
+
+
+class TrafficLight:
+    color = 'Красный'
+
+    def running(self, n):
+        colors = 'Красный Желтый Зеленый'.split()
+        times = (7, 2, 5)
+        dict_1 = dict(zip(colors, times))
+        conditions = cycle(colors)
+        for i in range(n * 3):
+            self.color = next(conditions)
+            print("Переключение светофора - теперь", self.color)
+            sleep(dict_1[self.color])
+
+
+light = TrafficLight()
+print(light.color)
+light.running(2)
