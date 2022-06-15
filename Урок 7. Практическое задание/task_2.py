@@ -25,3 +25,53 @@
 
 Два класса: абстрактный и Clothes
 """
+from abc import ABC, abstractmethod
+
+
+class Things(ABC):
+    dict = {}
+
+    @abstractmethod
+    def get_consumptions(self):
+        pass
+
+    @abstractmethod
+    def total_consumption(self):
+        pass
+
+
+class Clothes(Things):
+    @staticmethod
+    def con_suit(v):
+        return v / 6.5 + 0.5
+
+    @staticmethod
+    def con_coat(h):
+        return 2 * h + 0.3
+
+    _dict = {"suit": con_suit, "coat": con_coat}
+
+    def __init__(self, *args):
+        self.things = []
+        self.total = 0
+        for i in range(0, len(args), 2):
+            self.things.append((args[i], args[i + 1]))
+
+    def consumption(self, thing, a):
+        return self._dict[thing](a)
+
+    def get_consumptions(self):
+        for i in self.things:
+            print(f'Расход ткани на {i[0]} - {self.consumption(i[0], i[1]):.2f}')
+
+    @property
+    def total_consumption(self):
+        for i in self.things:
+            self.total += self.consumption(i[0], i[1])
+        return self.total
+
+
+k1 = Clothes('suit', 1.6, 'coat', 2, 'coat', 3)
+k1.get_consumptions()
+print()
+print(f"Общий расход ткани - {k1.total_consumption:.2f}")

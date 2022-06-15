@@ -100,3 +100,63 @@ print(cell2.make_order(10))
 *****\n *****\n *****\n *****\n *****\n *****\n
 **********\n **********\n *****
 """
+
+
+class Cell():
+
+    def __init__(self, q):
+        self.quantity = q
+
+    def __add__(self, other):
+        if type(other) == Cell:
+            return self.quantity + other.quantity
+        else:
+            return "Клетки складывают только с клетками."
+
+    def __sub__(self, other):
+        if type(other) == Cell:
+            if self.quantity - other.quantity > 0:
+                return self.quantity - other.quantity
+            else:
+                return "Вычитание клеток невозможно: разность меньше нуля"
+        else:
+            return "Клетки складывают только с клетками."
+
+    def __mul__(self, other):
+        if type(other) == Cell:
+            return self.quantity * other.quantity
+        else:
+            return "Клетки умножают только с клетками."
+
+    def __truediv__(self, other):
+        if type(other) == Cell:
+            return self.quantity + other.quantity
+        else:
+            return "Клетки делят только на клетки."
+
+    def make_order(self, n):
+        return ('*' * n + '\n') * (self.quantity // n) + '*' * (self.quantity % n)
+
+
+print("Создаем объекты клеток")
+cell1 = Cell(30)
+cell2 = Cell(25)
+cell3 = Cell(10)
+cell4 = Cell(15)
+print()
+print("Складываем")
+print(cell1 + cell2)
+print()
+print("Вычитаем")
+print(cell2 - cell1)
+print(cell4 - cell3)
+print()
+print("Умножаем")
+print(cell2 * cell1)
+print()
+print("Делим")
+print(cell1 / cell2)
+print()
+print("Организация ячеек по рядам")
+print(cell1.make_order(5))
+print(cell2.make_order(10))
