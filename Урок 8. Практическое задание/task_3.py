@@ -32,7 +32,7 @@ n = input('Введите число: ')
 while n != '&':
     try:
         my_list.append(valid(n))
-    except Exception as ex:
+    except ListDigitError as ex:
         print(ex)
     finally:
         n = input("Следующее число: ")

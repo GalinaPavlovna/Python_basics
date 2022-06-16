@@ -8,7 +8,7 @@
 """
 
 
-class Complex_number():
+class ComplexNumber():
     def __init__(self, *args):
         if len(args) == 1 and isinstance(args[0], str):
             s = args[0].split('+')
@@ -24,44 +24,44 @@ class Complex_number():
         return f'{self.re} + {self.im}i'
 
     def __add__(self, other):
-        if isinstance(other, Complex_number):
-            return Complex_number(self.re + other.re, self.im + other.im)
+        if isinstance(other, ComplexNumber):
+            return ComplexNumber(self.re + other.re, self.im + other.im)
         elif isinstance(other, (float, int)):
-            return Complex_number(self.re + other, self.im)
+            return ComplexNumber(self.re + other, self.im)
         else:
             raise ValueError('Комплексные числа можно складывать только с числами.')
 
     def __mul__(self, other):
-        if isinstance(other, Complex_number):
-            return Complex_number(self.re * other.re - self.im * other.im,
+        if isinstance(other, ComplexNumber):
+            return ComplexNumber(self.re * other.re - self.im * other.im,
                                   self.im * other.re + self.re * other.im)
         elif isinstance(other, (float, int)):
-            return Complex_number(self.re * other, self.im * other)
+            return ComplexNumber(self.re * other, self.im * other)
         else:
             raise ValueError('Комплексные числа можно умножать только на числа.')
 
     def __truediv__(self, other):
-        if isinstance(other, Complex_number):
-            c = Complex_number(other.re, -1 * other.im)
+        if isinstance(other, ComplexNumber):
+            c = ComplexNumber(other.re, -1 * other.im)
             c1 = self * c
             c2 = other * c
-            return Complex_number(c1.re / c2.re, c1.im / c2.re)
+            return ComplexNumber(c1.re / c2.re, c1.im / c2.re)
         elif isinstance(other, (float, int)):
-            return Complex_number(self.re / other, self.im / other)
+            return ComplexNumber(self.re / other, self.im / other)
         else:
             raise ValueError('Комплексные числа можно делить только на числа.')
 
     def __sub__(self, other):
-        if isinstance(other, Complex_number):
-            return Complex_number(self.re - other.re, self.im - other.im)
+        if isinstance(other, ComplexNumber):
+            return ComplexNumber(self.re - other.re, self.im - other.im)
         elif isinstance(other, (float, int)):
-            return Complex_number(self.re - other, self.im)
+            return ComplexNumber(self.re - other, self.im)
         else:
             raise ValueError('Комплексные числа можно вычитать только с числами.')
 
 
-c1 = Complex_number('4+7.5i')
-c2 = Complex_number(3, -2)
+c1 = ComplexNumber('4+7.5i')
+c2 = ComplexNumber(3, -2)
 print(c1 + c2, c1 - c2, c1 * c2, c1 / c2, sep='\n')
 
 # Особенно интересно это делать, зная, что в python есть встроенный тип комплексных чисел
